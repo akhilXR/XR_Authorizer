@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unity Access Control Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Unity Access Control Dashboard</h1>
+        
+        <!-- Authorize Device Section -->
+        <div class="section">
+            <h2>Authorize Device</h2>
+            <input type="text" id="authorizeDeviceId" placeholder="Enter Device ID">
+            <button onclick="authorizeDevice()">Authorize</button>
+            <p id="authorizeMessage"></p>
+        </div>
+
+        <!-- Revoke Access Section -->
+        <div class="section">
+            <h2>Revoke Access</h2>
+            <input type="text" id="revokeDeviceId" placeholder="Enter Device ID">
+            <button onclick="revokeAccess()">Revoke</button>
+            <p id="revokeMessage"></p>
+        </div>
+
+        <!-- Check Access Section -->
+        <div class="section">
+            <h2>Check Access</h2>
+            <input type="text" id="checkDeviceId" placeholder="Enter Device ID">
+            <button onclick="checkAccess()">Check</button>
+            <p id="checkMessage"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
