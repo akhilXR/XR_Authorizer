@@ -14,7 +14,7 @@ async function authorizeDevice() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ deviceId }),
+            body: JSON.stringify({ deviceId, state: "authorized" }), // Ensure state is set
         });
 
         const data = await response.json();
@@ -39,7 +39,7 @@ async function revokeAccess() {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ deviceId }),
+            body: JSON.stringify({ deviceId, state: "revoked" }), // Ensure state is set
         });
 
         const data = await response.json();
@@ -61,7 +61,17 @@ async function checkAccess() {
     try {
         const response = await fetch(`${backendUrl}/check-access?deviceId=${deviceId}`);
         const data = await response.json();
-        document.getElementById("checkMessage").textContent = data.authorized ? "Access granted." : "Access denied.";
+
+        let message;
+        if (data.state === "authorized") {
+            message = "Access granted (Authorized).";
+        } else if (data.state === "revoked") {
+            message = "Access denied (Revoked).";
+        } else {
+            message = "Access denied (Not Found).";
+        }
+
+        document.getElementById("checkMessage").textContent = message;
     } catch (error) {
         console.error("Error checking access:", error);
         document.getElementById("checkMessage").textContent = "Failed to check access.";
