@@ -1,4 +1,4 @@
-const backendUrl = "https://xr-authorizer-backend.onrender.com"; // Replace with your backend URL
+const backendUrl = "https://xr-authorizer-backend-adxl.onrender.com"; // Replace with your backend URL
 
 // Function to authorize a device
 async function authorizeDevice() {
